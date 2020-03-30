@@ -1,1 +1,20 @@
-export default 'I am exported string.';
+import axios from 'axios';
+
+export default class Search {
+  constructor(query) {
+    this.query = query;
+  }
+  async getResults() {
+    const key = '52f194fce6211fe426cd3832da9055d9';
+    const id = '02410039';
+    try {
+      const res = await axios(
+        `https://api.edamam.com/search?q=${this.query}&app_id=${id}&app_key=${key}&from=0&to=30`
+      );
+      this.result = res.data.hits;
+      // console.log(this.result);
+    } catch (err) {
+      alert(err);
+    }
+  }
+}
