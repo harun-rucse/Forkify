@@ -1,0 +1,12 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "browers": ["last 5 versions", "ie >= 8"]
+        }
+      }
+    ]
+  ]
+}
