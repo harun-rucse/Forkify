@@ -33,17 +33,15 @@ const limitRecipeTitle = (title, limit = 17) => {
 const renderRecipie = recipe => {
   const markup = `
         <li>
-            <a class="results__link" href="#23456">
+            <a class="results__link" href="#${recipe.recipe_id}">
                 <figure class="results__fig">
-                    <img src="${recipe.recipe.image}" alt="${
-    recipe.recipe.label
-  }">
+                    <img src="${recipe.image_url}" alt="${recipe.title}">
                 </figure>
                 <div class="results__data">
                     <h4 class="results__name">${limitRecipeTitle(
-                      recipe.recipe.label
+                      recipe.title
                     )}</h4>
-                    <p class="results__author">${recipe.recipe.source}</p>
+                    <p class="results__author">${recipe.publisher}</p>
                 </div>
             </a>
         </li>
