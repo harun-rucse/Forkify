@@ -10,7 +10,6 @@ export default class Recipe {
       const res = await axios(
         `${proxy}https://forkify-api.herokuapp.com/api/get?rId=${this.id}`
       );
-      console.log(res);
       this.title = res.data.recipe.title;
       this.img = res.data.recipe.image_url;
       this.author = res.data.recipe.publisher;
@@ -23,7 +22,7 @@ export default class Recipe {
 
   calcTime() {
     // Assume that every 3 ingerdient need 15 mint
-    const numIng = this.ingerdient.length;
+    const numIng = this.ingredients.length;
     const period = Math.ceil(numIng / 3);
     this.time = period * 15;
   }
