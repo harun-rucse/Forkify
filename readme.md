@@ -1,1 +1,3 @@
-# Forkify Recipe Apps using API(https://forkify-api.herokuapp.com/api/)
+# Forkify Recipe Apps using API
+
+#### Learning with webpack bundler, babel, ES6 JavaScript and so on....
