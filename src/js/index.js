@@ -34,11 +34,15 @@ const controlSearch = async () => {
     renderLoader(elements.searchRes);
 
     // 4) Search for Recipes
-    await state.search.getResults();
+    try {
+      await state.search.getResults();
 
-    // 5) Render results on UI
-    clearLoader();
-    searchView.renderResults(state.search.result);
+      // 5) Render results on UI
+      clearLoader();
+      searchView.renderResults(state.search.result);
+    } catch (err) {
+      alert('Error seach recipe');
+    }
   }
 };
 
@@ -78,18 +82,21 @@ const controlRecipe = async () => {
 
     // Get recipe object  and add it to state
     state.recipe = new Recipe(id);
+    try {
+      // Get recipe data and parseIngredients
+      await state.recipe.getRecipe();
+      state.recipe.parseIngedients();
 
-    // Get recipe data and parseIngredients
-    await state.recipe.getRecipe();
-    state.recipe.parseIngedients();
+      // Calculate serving and time
+      state.recipe.calcTime();
+      state.recipe.calcServings();
 
-    // Calculate serving and time
-    state.recipe.calcTime();
-    state.recipe.calcServings();
-
-    // Render recipe
-    clearLoader();
-    recipeView.renderRecipe(state.recipe);
+      // Render recipe
+      clearLoader();
+      recipeView.renderRecipe(state.recipe);
+    } catch (err) {
+      alert('Error passing recipe')
+    }
   }
 };
 
