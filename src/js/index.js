@@ -91,3 +91,19 @@ const controlRecipe = async () => {
 };
 
 ['load', 'hashchange'].forEach(event => window.addEventListener(event, controlRecipe));
+
+// Handle recipe button clicked
+elements.recipe.addEventListener('click', e => {
+  if (e.target.matches('.btn-decrease, .btn-decrease *')) {
+    // Decrease button is click
+    if (state.recipe.servings > 1) {
+      state.recipe.updateServings('dec');
+      recipeView.updateServingsIngrediens(state.recipe);
+    }
+  }
+  if (e.target.matches('.btn-increase, .btn-increase *')) {
+    // Increase button is click
+    state.recipe.updateServings('inc');
+    recipeView.updateServingsIngrediens(state.recipe);
+  }
+});
