@@ -1,6 +1,10 @@
 import Search from './models/Search';
 import Recipe from './models/Recipe';
-import { elements, renderLoader, clearLoader } from './views/base';
+import {
+  elements,
+  renderLoader,
+  clearLoader
+} from './views/base';
 import * as searchView from './views/searchView';
 
 /**
@@ -77,5 +81,4 @@ const controlRecipe = async () => {
   }
 };
 
-window.addEventListener('hashchange', controlRecipe);
-// window.addEventListener('load', controlRecipe);
+['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));

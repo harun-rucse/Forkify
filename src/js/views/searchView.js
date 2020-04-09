@@ -1,4 +1,6 @@
-import { elements } from './base';
+import {
+  elements
+} from './base';
 export const getInput = () => elements.searchInput.value;
 
 export const clearInput = () => {
@@ -28,6 +30,8 @@ const limitRecipeTitle = (title, limit = 17) => {
     }, 0);
     // return the result
     return `${newTitle.join(' ')} ...`;
+  } else {
+    return title;
   }
 };
 
