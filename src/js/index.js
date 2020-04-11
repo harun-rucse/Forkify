@@ -1,5 +1,6 @@
 import Search from './models/Search';
 import Recipe from './models/Recipe';
+import List from './models/List';
 import {
   elements,
   renderLoader,
@@ -7,7 +8,7 @@ import {
 } from './views/base';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
-
+import * as listView from './views/listView';
 /**
  * - Search object
  * - Current recipe object
@@ -103,6 +104,22 @@ const controlRecipe = async () => {
   }
 };
 
+/**
+ *  LIST CONTROLLER
+ */
+const controlList = () => {
+  // Create List object IF there is not yet and add to state
+  if (!state.list) state.list = new List();
+
+  // Add each ingredient to list
+  state.recipe.ingredients.forEach(el => {
+    const item = state.list.addItem(el.count, el.unit, el.ingredient);
+
+    // Render item on UI
+    listView.renderItem(item);
+  });
+};
+
 ['load', 'hashchange'].forEach(event => window.addEventListener(event, controlRecipe));
 
 // Handle recipe button clicked
@@ -118,5 +135,9 @@ elements.recipe.addEventListener('click', e => {
     // Increase button is click
     state.recipe.updateServings('inc');
     recipeView.updateServingsIngrediens(state.recipe);
+  }
+  if (e.target.matches('.recipe__btn-add, .recipe__btn-add *')) {
+    // Add shopping button is click
+    controlList();
   }
 });
