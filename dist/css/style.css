@@ -443,7 +443,7 @@ body {
   .shopping__list {
     list-style: none;
     max-height: 77rem;
-    overflow: scroll; }
+    overflow: auto; }
   .shopping__item {
     display: flex;
     align-items: flex-start;
