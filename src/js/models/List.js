@@ -1,9 +1,11 @@
+import uniqid from 'uniqid';
 export default class List {
     constructor() {
         this.list = [];
     }
     addItem(count, unit, ingredient) {
         const list = {
+            id: uniqid(),
             count,
             unit,
             ingredient
