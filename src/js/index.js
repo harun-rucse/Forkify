@@ -104,6 +104,21 @@ const controlRecipe = async () => {
   }
 };
 
+// Handle delete and update shopping list item
+elements.shopping.addEventListener('click', e => {
+  // Get the id of clicked item
+  const id = e.target.closest('.shopping__item').dataset.itemid;
+
+  // Handle delete
+  if (e.target.matches('.shopping__delete, .shopping__delete *')) {
+    // Delete from list
+    state.list.deleteItem(id);
+
+    // Delete from UI
+    listView.deleteItem(id);
+  }
+});
+
 /**
  *  LIST CONTROLLER
  */
