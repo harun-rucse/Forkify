@@ -55,11 +55,14 @@ elements.searchForm.addEventListener('submit', e => {
 // Even deligation
 elements.searchResPages.addEventListener('click', e => {
   const btn = e.target.closest('.btn-inline');
-  const goToPage = parseInt(btn.dataset.goto, 10);
+  if (btn) {
+    const goToPage = parseInt(btn.dataset.goto, 10);
 
-  // Render pagination
-  searchView.clearResult();
-  searchView.renderResults(state.search.result, goToPage);
+    // Render pagination
+    searchView.clearResult();
+    searchView.renderResults(state.search.result, goToPage);
+  }
+
 });
 
 /**
