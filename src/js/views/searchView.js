@@ -77,7 +77,7 @@ const createButton = (page, type) => `
     </button>
 `;
 
-const renserButtons = (page, numPages, resPerPage) => {
+const renderButtons = (page, numPages, resPerPage) => {
   const pages = Math.ceil(numPages / resPerPage);
 
   let button;
@@ -112,5 +112,5 @@ export const renderResults = (recipes, page = 1, resPerPage = 10) => {
   recipes.slice(start, end).forEach(renderRecipie);
 
   // Render pagination
-  renserButtons(page, recipes.length, resPerPage);
+  renderButtons(page, recipes.length, resPerPage);
 };
