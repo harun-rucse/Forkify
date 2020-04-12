@@ -157,6 +157,7 @@ const controlList = () => {
  */
 // TESTING
 state.likes = new Likes();
+likeView.toggleLikeMenu(state.likes.numLikes());
 
 const controlLike = () => {
   // create Like obj IF there is not yet and add it to state
@@ -185,6 +186,7 @@ const controlLike = () => {
     // Remove like from UI list
     likeView.deleteLike(currentID);
   }
+  likeView.toggleLikeMenu(state.likes.numLikes());
 }
 
 ['load', 'hashchange'].forEach(event => window.addEventListener(event, controlRecipe));

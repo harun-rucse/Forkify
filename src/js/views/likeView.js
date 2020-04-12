@@ -2,6 +2,10 @@ import {
     elements
 } from './base';
 
+export const toggleLikeMenu = numLike => {
+    elements.likeMenu.style.visibility = numLike > 0 ? 'visible' : 'hidden';
+}
+
 export const renderToggleLikeBtn = isLike => {
     const iconString = isLike ? 'icon-heart' : 'icon-heart-outlined';
 
