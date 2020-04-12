@@ -1,6 +1,7 @@
 import Search from './models/Search';
 import Recipe from './models/Recipe';
 import List from './models/List';
+import Likes from './models/Likes';
 import {
   elements,
   renderLoader,
@@ -150,6 +151,36 @@ const controlList = () => {
   });
 };
 
+/**
+ *  LIKE CONTROLLER
+ */
+const controlLike = () => {
+  // create Like obj IF there is not yet and add it to state
+  if (!state.likes) state.likes = new Likes();
+  const currentID = state.recipe.id;
+
+  // User not yet like this recipe
+  if (!state.likes.isLiked(currentID)) {
+    // Add like to Like list
+    const newLike = state.likes.addLike(currentID, state.recipe.title, state.recipe.author, state.recipe.img);
+
+    // Toggle like button
+
+    // Render like to UI list
+    console.log(state.likes);
+  }
+  // User already liked this recipe
+  else {
+    // Remove like from Like list
+    state.likes.deleteLike(currentID);
+
+    // Toggle like button
+
+    // Remove like from UI list
+    console.log(state.likes);
+  }
+}
+
 ['load', 'hashchange'].forEach(event => window.addEventListener(event, controlRecipe));
 
 // Handle recipe button clicked
@@ -169,5 +200,9 @@ elements.recipe.addEventListener('click', e => {
   if (e.target.matches('.recipe__btn-add, .recipe__btn-add *')) {
     // Add shopping button is click
     controlList();
+  }
+  if (e.target.matches('.recipe__love, .recipe__love *')) {
+    // Like button is click
+    controlLike();
   }
 });
