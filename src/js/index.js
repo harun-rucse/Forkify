@@ -10,6 +10,7 @@ import {
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
+import * as likeView from './views/likeView';
 /**
  * - Search object
  * - Current recipe object
@@ -98,7 +99,7 @@ const controlRecipe = async () => {
 
       // Render recipe
       clearLoader();
-      recipeView.renderRecipe(state.recipe);
+      recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
     } catch (err) {
       alert('Error passing recipe')
     }
@@ -154,6 +155,9 @@ const controlList = () => {
 /**
  *  LIKE CONTROLLER
  */
+// TESTING
+state.likes = new Likes();
+
 const controlLike = () => {
   // create Like obj IF there is not yet and add it to state
   if (!state.likes) state.likes = new Likes();
@@ -165,9 +169,10 @@ const controlLike = () => {
     const newLike = state.likes.addLike(currentID, state.recipe.title, state.recipe.author, state.recipe.img);
 
     // Toggle like button
+    likeView.renderToggleLikeBtn(true);
 
     // Render like to UI list
-    console.log(state.likes);
+    likeView.renderLike(newLike);
   }
   // User already liked this recipe
   else {
@@ -175,9 +180,10 @@ const controlLike = () => {
     state.likes.deleteLike(currentID);
 
     // Toggle like button
+    likeView.renderToggleLikeBtn(false);
 
     // Remove like from UI list
-    console.log(state.likes);
+    likeView.deleteLike(currentID);
   }
 }
 
