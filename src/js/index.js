@@ -155,10 +155,6 @@ const controlList = () => {
 /**
  *  LIKE CONTROLLER
  */
-// TESTING
-state.likes = new Likes();
-likeView.toggleLikeMenu(state.likes.numLikes());
-
 const controlLike = () => {
   // create Like obj IF there is not yet and add it to state
   if (!state.likes) state.likes = new Likes();
@@ -188,6 +184,20 @@ const controlLike = () => {
   }
   likeView.toggleLikeMenu(state.likes.numLikes());
 }
+
+// Restoring recipe likes
+window.addEventListener('load', ()=> {
+  state.likes = new Likes();
+
+  // Restore likes
+  state.likes.readStorage();
+  
+  // Toggle like menu
+  likeView.toggleLikeMenu(state.likes.numLikes());
+
+  // Render likes
+  state.likes.likes.forEach(likeView.renderLike);
+});
 
 ['load', 'hashchange'].forEach(event => window.addEventListener(event, controlRecipe));
 
