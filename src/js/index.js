@@ -152,6 +152,21 @@ const controlList = () => {
   });
 };
 
+// Restoring shopping list
+window.addEventListener('load', ()=> {
+  // Create new list object and add it to state
+  state.list = new List();
+
+  // Restoring from localStorage
+  state.list.readStorage();
+
+  // Render list
+  state.list.list.forEach(listView.renderItem);
+
+  // Render delete all list btn
+  listView.renderRemoveAllListBtn();
+});
+
 /**
  *  LIKE CONTROLLER
  */
