@@ -29,8 +29,8 @@ export default class List {
         this.persistData();
     }
     deleteAllItem() {
-        this.list.forEach(()=> this.list.pop());
-
+        this.list.splice(0);
+        
         // Persist list on localStorage
         this.persistData();
     }

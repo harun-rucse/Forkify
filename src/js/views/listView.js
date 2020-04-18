@@ -2,6 +2,14 @@ import {
     elements
 } from './base';
 
+export const toggleClearListBtn = list => {
+    elements.clearList.style.visibility = list > 0 ? 'visible' : 'hidden';
+}
+
+export const clearList = ()=> {
+    elements.shopping.innerHTML ='';
+}
+
 export const renderItem = item => {
     const markup = `
     <li class="shopping__item" data-itemid=${item.id}>

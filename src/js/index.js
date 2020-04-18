@@ -134,6 +134,8 @@ elements.shopping.addEventListener('click', e => {
 
 
   }
+  // Clear list all item btn
+  listView.toggleClearListBtn(state.list.list.length);
 });
 
 /**
@@ -150,6 +152,8 @@ const controlList = () => {
     // Render item on UI
     listView.renderItem(item);
   });
+  // Clear list all item btn
+  listView.toggleClearListBtn(state.list.list.length);
 };
 
 // Restoring shopping list
@@ -163,8 +167,8 @@ window.addEventListener('load', ()=> {
   // Render list
   state.list.list.forEach(listView.renderItem);
 
-  // Render delete all list btn
-  listView.renderRemoveAllListBtn();
+  // Clear list all item btn
+  listView.toggleClearListBtn(state.list.list.length);
 });
 
 /**
@@ -238,4 +242,16 @@ elements.recipe.addEventListener('click', e => {
     // Like button is click
     controlLike();
   }
+});
+
+// Clear shopping list button handle
+elements.clearList.addEventListener('click', ()=> {
+  // Delete all list from list array
+  state.list.deleteAllItem();
+
+  // Clear from UI
+  listView.clearList();
+
+  // Toggle clear list button
+  listView.toggleClearListBtn(state.list.list.length);
 });

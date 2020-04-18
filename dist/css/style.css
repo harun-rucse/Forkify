@@ -490,3 +490,19 @@ body {
   .shopping__item:hover .shopping__delete {
     opacity: 1;
     visibility: visible; }
+    .btn__clear-list {
+      background-image: linear-gradient(to right bottom, #FBDB89, #F48982);
+      border: none;
+      padding: 1.3rem 2rem;
+      margin: 0 auto;
+      width: 85%;
+      text-transform: uppercase;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      align-items: center;
+      transition: all .2s;
+      margin-bottom: 2rem; }
+      .btn__clear-list:hover {
+        transform: scale(1.05); }
+    }
