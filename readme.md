@@ -7,16 +7,23 @@
 ![Screenshot (1)](https://user-images.githubusercontent.com/48089385/79644354-3b826680-81ca-11ea-9024-d0546d9c9d32.png)
 
 ## Installation
+Clone repository
 
-- Clone repository
+```
+git clone https://github.com/harun-rucse/Forkify.git
+```
 
-  - `git clone https://github.com/harun-rucse/Forkify.git`
+Install dependencies
 
-- Goto Forkify folder then
+```
+npm install
+```
 
-- Start server
+Run server
 
-  - `npm run start`
+```
+npm run start
+```
 
-- Look at site
+Look at site
   - Navigate to [http://localhost:8000](http://localhost:8000/)
